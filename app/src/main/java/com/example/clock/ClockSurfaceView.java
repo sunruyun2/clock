@@ -53,16 +53,16 @@ public class ClockSurfaceView extends SurfaceView implements Runnable {
                 RegPoly setMarks = new RegPoly(60, getWidth()/2, getHeight()/2, length,canvas, paint);
                 RegPoly secHand = new RegPoly(60, getWidth()/2, getHeight()/2, length -20,canvas, paint);
                 //n -- spead -- sperate
-                RegPoly minHand = new RegPoly(3600, getWidth()/2, getHeight()/2, length -60,canvas, paint);
+                //RegPoly minHand = new RegPoly(3600, getWidth()/2, getHeight()/2, length -60,canvas, paint);
                 //RegPoly setHourMarks = new RegPoly(12, getWidth()/2, getHeight()/2, length - 10,canvas, paint);
                 setMarks.drawNodes();
                 //setHourMarks.drawNodes();
                 secHand.drawRadius(sec + 45);
-                minHand.drawRadius(sec + 2700);
+                //minHand.drawRadius(sec + 2700);
 
-               //sleep for 1 sec
-                try{Thread.sleep(1000);}
-                catch (Exception e){}
+                //sleep for 1 sec
+                //try{Thread.sleep(1000);}
+                //catch (Exception e){}
                 sec++;
                 holder.unlockCanvasAndPost(canvas);
             }

@@ -49,16 +49,24 @@ public class ClockSurfaceView extends SurfaceView implements Runnable {
                 canvas.drawPaint(paint);
 
                 //draw the marks
-                paint.setColor(Color.RED);
+                paint.setColor(Color.WHITE);
+                paint.setStrokeWidth(10);
                 RegPoly setMarks = new RegPoly(60, getWidth()/2, getHeight()/2, length,canvas, paint);
-                RegPoly secHand = new RegPoly(60, getWidth()/2, getHeight()/2, length -20,canvas, paint);
-                //n -- spead -- sperate
-                RegPoly minHand = new RegPoly(3600, getWidth()/2, getHeight()/2, length -60,canvas, paint);
-                //RegPoly setHourMarks = new RegPoly(12, getWidth()/2, getHeight()/2, length - 10,canvas, paint);
                 setMarks.drawNodes();
+
+                //draw text
+                RegPoly setHourMarks = new RegPoly(12, getWidth()/2, getHeight()/2, length - 40,canvas, paint);
                 //setHourMarks.drawNodes();
-                secHand.drawRadius(sec + 45);
-                minHand.drawRadius(sec + 2700);
+                setHourMarks.drawNumeral();
+
+                //draw the hands //n -- speed -- seperate
+                RegPoly secHand = new RegPoly(60, getWidth()/2, getHeight()/2, length -20,canvas, paint);
+                RegPoly minHand = new RegPoly(60*60, getWidth()/2, getHeight()/2, length -80,canvas, paint);
+                RegPoly hourHand = new RegPoly(60*60*60, getWidth()/2, getHeight()/2, length -120,canvas, paint);
+
+                secHand.drawRadius(sec + 45); //cos(2*pi*45/60 = 0)
+                minHand.drawRadius(sec + 2700); // 60*60*0.75
+                hourHand.drawRadius(sec + 162000); //60*60*0.75
 
                //sleep for 1 sec
                 try{Thread.sleep(1000);}

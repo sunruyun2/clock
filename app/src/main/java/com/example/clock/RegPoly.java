@@ -46,5 +46,25 @@ public class RegPoly {
         }
     }
 
+    public void drawNumeral(){
+        paint.setTextSize(30);
+        int [] number = {1,2,3,4,5,6,7,8,9,10,11,12};
+        for (int i = 0; i < n; i++) {
+            String tmp = String.valueOf(number[(i + 2) % 12]);
+            this.canvas.drawText(tmp,this.getX(i),this.getY(i), paint);
+        }
+    }
+    /* drawText
+    private void drawNumeral(Canvas canvas) {
+        paint.setTextSize(fontSize);
+        for (int number:numbers){
+            String tmp = String.valueOf(number);
+            paint.getTextBounds(tmp, 0 , tmp.length(), rect);
+            double angle = Math.PI / 6 * (number - 3);
+            int x = (int) (width / 2 + Math.cos(angle)*radius - rect.width() / 2);
+            int y = (int) (height / 2 + Math.sin(angle)*radius - rect.width() / 2);
+            canvas.drawText(tmp,x,y,paint);
+        }
+    }*/
 
 }

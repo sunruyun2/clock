@@ -8,6 +8,8 @@ import android.graphics.Paint;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
+import java.util.Calendar;
+
 public class ClockSurfaceView extends SurfaceView implements Runnable {
 
     private float length;
@@ -42,6 +44,16 @@ public class ClockSurfaceView extends SurfaceView implements Runnable {
     @Override
     public void run(){
         int sec = 0;
+
+        //record current time
+        Calendar c = Calendar.getInstance();
+        int hour = c.get(Calendar.HOUR_OF_DAY);
+        int second = c.get(Calendar.SECOND);
+        int minute = c.get(Calendar.MINUTE);
+        hour = hour > 12 ? hour - 12 : hour;
+        minute = minute * 60 + second;
+        hour = hour * 60* 60 + minute;
+
         while(running){
             if(holder.getSurface().isValid()){
                 Canvas canvas = holder.lockCanvas();
@@ -62,11 +74,12 @@ public class ClockSurfaceView extends SurfaceView implements Runnable {
                 //draw the hands //n -- speed -- seperate
                 RegPoly secHand = new RegPoly(60, getWidth()/2, getHeight()/2, length -20,canvas, paint);
                 RegPoly minHand = new RegPoly(60*60, getWidth()/2, getHeight()/2, length -80,canvas, paint);
-                RegPoly hourHand = new RegPoly(60*60*60, getWidth()/2, getHeight()/2, length -120,canvas, paint);
+                RegPoly hourHand = new RegPoly(12*60*60, getWidth()/2, getHeight()/2, length -120,canvas, paint);
 
-                secHand.drawRadius(sec + 45); //cos(2*pi*45/60 = 0)
-                minHand.drawRadius(sec + 2700); // 60*60*0.75
-                hourHand.drawRadius(sec + 162000); //60*60*0.75
+
+                secHand.drawRadius(sec + 45 + second); //cos(2*pi*45/60 = 0)
+                minHand.drawRadius(sec + 45 * 60 + minute); // 60*60*0.75
+                hourHand.drawRadius(sec + 45 * 60 * 12 + hour); //60*60*0.75
 
                //sleep for 1 sec
                 try{Thread.sleep(1000);}
@@ -76,5 +89,4 @@ public class ClockSurfaceView extends SurfaceView implements Runnable {
             }
         }
     }
-
 }

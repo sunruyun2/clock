@@ -24,8 +24,8 @@ public class TimerRegPoly {
     }
 
     public void drawTimer(){
-        paint.setTextSize(200);
-        this.canvas.drawText("Test",x0,y0,paint);
+        paint.setTextSize(r);
+        this.canvas.drawText("Test", x0 - r,y0,paint);
     }
 
 }

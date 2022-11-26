@@ -47,20 +47,9 @@ public class TimerSurfaceView extends SurfaceView implements Runnable {
         while(running){
             if(holder.getSurface().isValid()){
                 Canvas canvas = holder.lockCanvas();
-                Paint paint = new Paint(); paint.setColor(Color.GREEN);
+                Paint paint = new Paint(); paint.setColor(Color.BLACK);
                 canvas.drawPaint(paint);
-
-                //draw the marks
-                paint.setColor(Color.RED);
-                //RegPoly setMarks = new RegPoly(60, getWidth()/2, getHeight()/2, length,canvas, paint);
-                //RegPoly secHand = new RegPoly(60, getWidth()/2, getHeight()/2, length -20,canvas, paint);
-                //setMarks.drawNodes();
-                //secHand.drawRadius(sec + 45);
-
-                //canvas.drawArc();
-
-                //sleep for 1 sec
-
+                paint.setColor(Color.WHITE);
                 TimerRegPoly timer = new TimerRegPoly(getWidth()/2, getHeight()/2, length, canvas,paint);
                 timer.drawTimer();
                 try{Thread.sleep(1000*secs/60);}

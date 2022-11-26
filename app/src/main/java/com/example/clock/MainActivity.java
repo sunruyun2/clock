@@ -21,12 +21,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onPause(){
         super.onPause();
         clock.onPauseClock();
-        timer.onPauseClock();
+        timer.onPauseTimer();
     }
     @Override
     protected void onResume(){
         super.onResume();
         clock.onResumeClock();
-        timer.onResumeClock();
+        timer.onResumeTimer();
     }
 }

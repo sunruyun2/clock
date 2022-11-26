@@ -23,13 +23,13 @@ public class TimerSurfaceView extends SurfaceView implements Runnable {
         this.holder = getHolder();
     }
 
-    public void onResumeClock(){
+    public void onResumeTimer(){
         thread = new Thread(this);
         thread.start();
         running = true;
     }
 
-    public void onPauseClock(){
+    public void onPauseTimer(){
         running = false;
         boolean reentry = true;
         while (reentry) {
@@ -52,14 +52,17 @@ public class TimerSurfaceView extends SurfaceView implements Runnable {
 
                 //draw the marks
                 paint.setColor(Color.RED);
-                RegPoly setMarks = new RegPoly(60, getWidth()/2, getHeight()/2, length,canvas, paint);
-                RegPoly secHand = new RegPoly(60, getWidth()/2, getHeight()/2, length -20,canvas, paint);
-                setMarks.drawNodes();
-                secHand.drawRadius(sec + 45);
+                //RegPoly setMarks = new RegPoly(60, getWidth()/2, getHeight()/2, length,canvas, paint);
+                //RegPoly secHand = new RegPoly(60, getWidth()/2, getHeight()/2, length -20,canvas, paint);
+                //setMarks.drawNodes();
+                //secHand.drawRadius(sec + 45);
 
                 //canvas.drawArc();
 
                 //sleep for 1 sec
+
+                TimerRegPoly timer = new TimerRegPoly(getWidth()/2, getHeight()/2, length, canvas,paint);
+                timer.drawTimer();
                 try{Thread.sleep(1000*secs/60);}
                 catch (Exception e){}
                 sec++;

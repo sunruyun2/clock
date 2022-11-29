@@ -2,6 +2,7 @@ package com.example.clock;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     ClockSurfaceView clock;
     TimerSurfaceView timer;
+    ConstraintLayout mainLayout;
 
     //edit menu
     @Override
@@ -37,10 +39,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //get the size of the screen
+        setContentView(R.layout.activity_main);
 
         clock = new ClockSurfaceView(this , 300);
         timer = new TimerSurfaceView(this, 300 , 60);
-        setContentView(timer);
+        mainLayout = (ConstraintLayout) findViewById(R.id.main_layout);
+        mainLayout.addView(clock);
+        mainLayout.addView(timer);
+
     }
 
     @Override

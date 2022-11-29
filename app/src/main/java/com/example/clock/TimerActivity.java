@@ -9,13 +9,14 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.Timer;
+
+public class TimerActivity extends AppCompatActivity {
+
     ClockSurfaceView clock;
     TimerSurfaceView timer;
-    ConstraintLayout mainLayout;
+    ConstraintLayout timerLayout;
 
     //edit menu
     @Override
@@ -31,12 +32,12 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.item1:
-                //Intent myIntent = new Intent(MainActivity.this, TimerActivity.class);//Optional parameters
-                //MainActivity.this.startActivity(myIntent);
+                Intent myIntent = new Intent(TimerActivity.this, MainActivity.class);//Optional parameters
+                TimerActivity.this.startActivity(myIntent);
 
             case R.id.item2:
-                Intent myIntent = new Intent(MainActivity.this, TimerActivity.class);//Optional parameters
-                MainActivity.this.startActivity(myIntent);
+                //Intent myIntent = new Intent(MainActivity.this, TimerActivity.class);//Optional parameters
+                //MainActivity.this.startActivity(myIntent);
             default:return super.onOptionsItemSelected(item);
         }
     }
@@ -44,27 +45,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //get the size of the screen
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_timer);
+
 
         clock = new ClockSurfaceView(this , 300);
         timer = new TimerSurfaceView(this, 300 , 60);
-        mainLayout = (ConstraintLayout) findViewById(R.id.main_layout);
-        //mainLayout.addView(timer);
-        mainLayout.addView(clock);
-
-    }
-
-    @Override
-    protected void onPause(){
-        super.onPause();
-        clock.onPauseClock();
-        timer.onPauseTimer();
-    }
-    @Override
-    protected void onResume(){
-        super.onResume();
-        clock.onResumeClock();
-        timer.onResumeTimer();
+        timerLayout = (ConstraintLayout) findViewById(R.id.timerLayout);
+        timerLayout.addView(timer);
     }
 }

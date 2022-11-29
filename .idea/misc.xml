@@ -3,9 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/homework/AndroidStudioProjects/Clock/app/src/main/res/drawable/ic_baseline_timer_24.xml" value="0.1" />
         <entry key="..\:/homework/AndroidStudioProjects/Clock/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/homework/AndroidStudioProjects/Clock/app/src/main/res/menu/example_menu.xml" value="0.215625" />
+        <entry key="..\:/homework/AndroidStudioProjects/Clock/app/src/main/res/layout/activity_timer.xml" value="0.19293478260869565" />
+        <entry key="..\:/homework/AndroidStudioProjects/Clock/app/src/main/res/menu/example_menu.xml" value="0.21666666666666667" />
       </map>
     </option>
   </component>

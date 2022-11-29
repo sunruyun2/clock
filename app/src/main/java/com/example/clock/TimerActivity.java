@@ -17,12 +17,13 @@ public class TimerActivity extends AppCompatActivity {
     ClockSurfaceView clock;
     TimerSurfaceView timer;
     ConstraintLayout timerLayout;
+    boolean isClock = false;
 
     //edit menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.example_menu, menu);
+        inflater.inflate(R.menu.example_menu_for_timer, menu);
 
         return true;
     }
@@ -34,10 +35,6 @@ public class TimerActivity extends AppCompatActivity {
             case R.id.item1:
                 Intent myIntent = new Intent(TimerActivity.this, MainActivity.class);//Optional parameters
                 TimerActivity.this.startActivity(myIntent);
-
-            case R.id.item2:
-                //Intent myIntent = new Intent(MainActivity.this, TimerActivity.class);//Optional parameters
-                //MainActivity.this.startActivity(myIntent);
             default:return super.onOptionsItemSelected(item);
         }
     }

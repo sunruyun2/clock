@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     ClockSurfaceView clock;
     TimerSurfaceView timer;
     ConstraintLayout mainLayout;
+    boolean isClock = true;
 
     //edit menu
     @Override
@@ -31,12 +32,9 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.item1:
-                //Intent myIntent = new Intent(MainActivity.this, TimerActivity.class);//Optional parameters
-                //MainActivity.this.startActivity(myIntent);
-
-            case R.id.item2:
                 Intent myIntent = new Intent(MainActivity.this, TimerActivity.class);//Optional parameters
                 MainActivity.this.startActivity(myIntent);
+
             default:return super.onOptionsItemSelected(item);
         }
     }

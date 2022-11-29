@@ -53,4 +53,17 @@ public class TimerActivity extends AppCompatActivity {
         timerLayout = (ConstraintLayout) findViewById(R.id.timerLayout);
         timerLayout.addView(timer);
     }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        clock.onPauseClock();
+        timer.onPauseTimer();
+    }
+    @Override
+    protected void onResume(){
+        super.onResume();
+        clock.onResumeClock();
+        timer.onResumeTimer();
+    }
 }

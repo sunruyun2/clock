@@ -10,7 +10,7 @@ import android.view.SurfaceView;
 
 public class TimerSurfaceView extends SurfaceView implements Runnable {
 
-    private int secs;
+    private int secs = 600;
     private float length;
     private Thread thread;
     private boolean running = false;

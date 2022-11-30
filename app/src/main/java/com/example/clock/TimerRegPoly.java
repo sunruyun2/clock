@@ -9,6 +9,7 @@ public class TimerRegPoly {
     private int n;
     private float x0, y0, r;
     private float x[], y[];
+    int secs = 600;
 
     private Canvas canvas; private Paint paint;
 
@@ -25,7 +26,20 @@ public class TimerRegPoly {
 
     public void drawTimer(){
         paint.setTextSize(r);
-        this.canvas.drawText("Test", x0 - r,y0,paint);
+        String time = convertTimeToText(secs);
+        this.canvas.drawText(time, x0 - r,y0,paint);
+    }
+
+    public String convertTimeToText(int secs){
+        int firstDigit = secs / 600;
+        int secondDigit = secs % 600 / 60;
+        int thirdDigit = secs % 60 / 10;
+        int forthDigit = secs % 10;
+        return Integer.toString(firstDigit)
+                + Integer.toString(secondDigit)
+                + ":"
+                + Integer.toString(thirdDigit)
+                + Integer.toString(forthDigit);
     }
 
 }

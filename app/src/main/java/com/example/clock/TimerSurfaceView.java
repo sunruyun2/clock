@@ -15,6 +15,7 @@ public class TimerSurfaceView extends SurfaceView implements Runnable {
     private Thread thread;
     private boolean running = false;
     private SurfaceHolder holder;
+    private boolean start = false;
 
     public TimerSurfaceView(Context context, float length , int secs){
         super(context);
@@ -41,6 +42,8 @@ public class TimerSurfaceView extends SurfaceView implements Runnable {
             }
         }
     }
+
+    //draw a text before the button(based on input) is clicked
     @Override
     public void run(){
         while(running){
@@ -50,7 +53,11 @@ public class TimerSurfaceView extends SurfaceView implements Runnable {
                 canvas.drawPaint(paint);
                 paint.setColor(Color.WHITE);
                 TimerRegPoly timer = new TimerRegPoly(getWidth()/2, getHeight()/2, length, canvas,paint, secs);
-                timer.drawTimer();
+                if (start){
+                    timer.drawTimer();
+                } else {
+                    timer.drawTimerText(600);
+                }
                 try{Thread.sleep(1000);}
                 catch (Exception e){}
                 secs--;

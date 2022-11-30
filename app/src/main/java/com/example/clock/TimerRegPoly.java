@@ -41,4 +41,10 @@ public class TimerRegPoly {
                 + Integer.toString(forthDigit);
     }
 
+    public void drawTimerText(int secs){
+        paint.setTextSize(r);
+        String time = convertTimeToText(secs);
+        this.canvas.drawText(time, x0 - r,y0,paint);
+    }
+
 }

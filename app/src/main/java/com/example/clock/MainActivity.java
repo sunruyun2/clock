@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         clock = new ClockSurfaceView(this , 300);
-        timer = new TimerSurfaceView(this, 300 , 60);
+        timer = new TimerSurfaceView(this, 300 , 600);
         mainLayout = (ConstraintLayout) findViewById(R.id.main_layout);
         //mainLayout.addView(timer);
         mainLayout.addView(clock);

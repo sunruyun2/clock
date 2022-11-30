@@ -9,19 +9,18 @@ public class TimerRegPoly {
     private int n;
     private float x0, y0, r;
     private float x[], y[];
-    int secs = 600;
+    private int secs;
 
     private Canvas canvas; private Paint paint;
 
     // constructor
-    public TimerRegPoly( float x0, float y0, float r, Canvas canvas, Paint paint) {
+    public TimerRegPoly( float x0, float y0, float r, Canvas canvas, Paint paint, int secs) {
         this.x0 = x0;
         this.y0 = y0;
         this.r = r;
-
         this.canvas = canvas;
         this.paint = paint;
-
+        this.secs = secs;
     }
 
     public void drawTimer(){

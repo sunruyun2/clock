@@ -10,7 +10,7 @@ import android.view.SurfaceView;
 
 public class TimerSurfaceView extends SurfaceView implements Runnable {
 
-    private int secs = 600;
+    private int secs;
     private float length;
     private Thread thread;
     private boolean running = false;
@@ -43,19 +43,18 @@ public class TimerSurfaceView extends SurfaceView implements Runnable {
     }
     @Override
     public void run(){
-        int sec = 0;
         while(running){
             if(holder.getSurface().isValid()){
                 Canvas canvas = holder.lockCanvas();
                 Paint paint = new Paint(); paint.setColor(Color.BLACK);
                 canvas.drawPaint(paint);
                 paint.setColor(Color.WHITE);
-                TimerRegPoly timer = new TimerRegPoly(getWidth()/2, getHeight()/2, length, canvas,paint);
+                TimerRegPoly timer = new TimerRegPoly(getWidth()/2, getHeight()/2, length, canvas,paint, secs);
                 timer.drawTimer();
-                try{Thread.sleep(1000*secs/60);}
+                try{Thread.sleep(1000);}
                 catch (Exception e){}
-                sec++;
-                if (sec == secs){
+                secs--;
+                if (secs < 0){
                     running = false;
                 }
                 holder.unlockCanvasAndPost(canvas);

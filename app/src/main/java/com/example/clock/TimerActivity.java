@@ -11,6 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.Timer;
 
@@ -19,8 +20,9 @@ public class TimerActivity extends AppCompatActivity {
     ClockSurfaceView clock;
     TimerSurfaceView timer;
     ConstraintLayout timerLayout;
-    Button start;
-    int originalSecs = 600;
+    Button start ,add, minus;
+    int secs = 600;
+    boolean timerStart = false;
 
     //edit menu
     @Override
@@ -49,7 +51,7 @@ public class TimerActivity extends AppCompatActivity {
 
 
         clock = new ClockSurfaceView(this , 300);
-        timer = new TimerSurfaceView(this, 300 , originalSecs);
+        timer = new TimerSurfaceView(this, 300 , secs);
         timerLayout = (ConstraintLayout) findViewById(R.id.timerLayout);
         timerLayout.addView(timer);
 
@@ -59,6 +61,36 @@ public class TimerActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 timer.setStart();
+            }
+        });
+
+        //add secs
+        add = findViewById(R.id.plus30);
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (secs < 3570){
+                    secs = secs + 30;
+                    timer.setSecs(secs);
+                } else {
+                    Toast.makeText(TimerActivity.this, "time is beyond the limit", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
+
+        //reduce secs
+        minus = findViewById(R.id.minus30);
+        minus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (secs >= 30){
+                    secs = secs - 30;
+                    timer.setSecs(secs);
+                } else {
+                    Toast.makeText(TimerActivity.this, "time ie below the limit", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

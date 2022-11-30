@@ -71,5 +71,8 @@ public class TimerSurfaceView extends SurfaceView implements Runnable {
         this.start = true;
     }
 
+    public void setSecs(int secs){
+        this.secs = secs;
+    }
 }
 

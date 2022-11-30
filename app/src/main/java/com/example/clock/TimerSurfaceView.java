@@ -53,20 +53,22 @@ public class TimerSurfaceView extends SurfaceView implements Runnable {
                 canvas.drawPaint(paint);
                 paint.setColor(Color.WHITE);
                 TimerRegPoly timer = new TimerRegPoly(getWidth()/2, getHeight()/2, length, canvas,paint, secs);
-                if (start){
-                    timer.drawTimer();
-                } else {
-                    timer.drawTimerText(600);
-                }
+                timer.drawTimer();
                 try{Thread.sleep(1000);}
                 catch (Exception e){}
-                secs--;
+                if (start){
+                    secs--;
+                }
                 if (secs < 0){
                     running = false;
                 }
                 holder.unlockCanvasAndPost(canvas);
             }
         }
+    }
+
+    public void setStart(){
+        this.start = true;
     }
 
 }

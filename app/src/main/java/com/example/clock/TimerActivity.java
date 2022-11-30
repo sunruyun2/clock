@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import java.util.Timer;
 
@@ -17,7 +19,8 @@ public class TimerActivity extends AppCompatActivity {
     ClockSurfaceView clock;
     TimerSurfaceView timer;
     ConstraintLayout timerLayout;
-    boolean isClock = false;
+    Button start;
+    int originalSecs = 600;
 
     //edit menu
     @Override
@@ -46,9 +49,21 @@ public class TimerActivity extends AppCompatActivity {
 
 
         clock = new ClockSurfaceView(this , 300);
-        timer = new TimerSurfaceView(this, 300 , 600);
+        timer = new TimerSurfaceView(this, 300 , originalSecs);
         timerLayout = (ConstraintLayout) findViewById(R.id.timerLayout);
         timerLayout.addView(timer);
+
+        //start the timer
+        start = findViewById(R.id.timerStart);
+        start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                timer.setStart();
+            }
+        });
+
+
+
     }
 
     @Override

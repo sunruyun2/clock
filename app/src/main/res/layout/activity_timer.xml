@@ -8,13 +8,30 @@
     android:id="@+id/timerLayout">
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/timerStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="Start"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.75" />
+
+    <Button
+        android:id="@+id/plus30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-30s"
+        app:layout_constraintBottom_toTopOf="@+id/timerStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    <Button
+        android:id="@+id/minus30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+30s"
+        app:layout_constraintBottom_toTopOf="@+id/plus30"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

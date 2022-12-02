@@ -84,7 +84,7 @@ public class ClockSurfaceView extends SurfaceView implements Runnable {
                 RegPoly secHand = new RegPoly(60, getWidth()/2, getHeight()/2, length -20,canvas, paint);
                 RegPoly minHand = new RegPoly(60*60, getWidth()/2, getHeight()/2, length -80,canvas, paint);
                 RegPoly hourHand = new RegPoly(12*60*60, getWidth()/2, getHeight()/2, length -120,canvas, paint);
-
+                RegPoly millisecHand = new RegPoly(1000, getWidth()/2, getHeight()/2, length - 200, canvas, paint);
 
                 secHand.drawRadius(sec + 45 + second); //cos(2*pi*45/60 = 0)
                 minHand.drawRadius(sec + 45 * 60 + minute); // 60*60*0.75

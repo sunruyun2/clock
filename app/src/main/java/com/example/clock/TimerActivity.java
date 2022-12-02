@@ -21,7 +21,7 @@ public class TimerActivity extends AppCompatActivity {
     TimerSurfaceView timer;
     ConstraintLayout timerLayout;
     Button start ,add, minus;
-    int secs = 600;
+    int secs = 30;
     boolean timerStart = false;
     Button button3, button4;
 

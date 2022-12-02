@@ -23,6 +23,7 @@ public class TimerActivity extends AppCompatActivity {
     Button start ,add, minus;
     int secs = 600;
     boolean timerStart = false;
+    Button button3, button4;
 
     //edit menu
     @Override
@@ -54,6 +55,22 @@ public class TimerActivity extends AppCompatActivity {
         timer = new TimerSurfaceView(this, 400 , secs);
         timerLayout = (ConstraintLayout) findViewById(R.id.timerLayout);
         timerLayout.addView(timer);
+
+
+        button3 = findViewById(R.id.button3);
+        button4 = findViewById(R.id.button4);
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                timer.changeTheme(true);
+            }
+        });
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                timer.changeTheme(false);
+            }
+        });
 
         //start the timer
         start = findViewById(R.id.timerStart);

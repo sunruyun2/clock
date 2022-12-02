@@ -16,6 +16,7 @@ public class TimerSurfaceView extends SurfaceView implements Runnable {
     private boolean running = false;
     private SurfaceHolder holder;
     private boolean start = false;
+    private boolean isBlackTheme = true;
 
     public TimerSurfaceView(Context context, float length , int secs){
         super(context);
@@ -43,15 +44,25 @@ public class TimerSurfaceView extends SurfaceView implements Runnable {
         }
     }
 
+    public void changeTheme(boolean isBlackTheme){
+        this.isBlackTheme = isBlackTheme;
+    }
+
     //draw a text before the button(based on input) is clicked
     @Override
     public void run(){
         while(running){
             if(holder.getSurface().isValid()){
                 Canvas canvas = holder.lockCanvas();
-                Paint paint = new Paint(); paint.setColor(Color.BLACK);
+                Paint paint = new Paint();
+
+                paint.setColor(Color.BLACK);
+                if (!isBlackTheme){paint.setColor(Color.WHITE);};
                 canvas.drawPaint(paint);
+
                 paint.setColor(Color.WHITE);
+                if (!isBlackTheme){paint.setColor(Color.BLACK);};
+
                 TimerRegPoly timer = new TimerRegPoly(getWidth()/2, getHeight()/2, length, canvas,paint, secs);
                 timer.drawTimer();
                 try{Thread.sleep(1000);}

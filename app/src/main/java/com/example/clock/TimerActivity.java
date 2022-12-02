@@ -50,8 +50,8 @@ public class TimerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_timer);
 
 
-        clock = new ClockSurfaceView(this , 300);
-        timer = new TimerSurfaceView(this, 300 , secs);
+        clock = new ClockSurfaceView(this , 400);
+        timer = new TimerSurfaceView(this, 400 , secs);
         timerLayout = (ConstraintLayout) findViewById(R.id.timerLayout);
         timerLayout.addView(timer);
 

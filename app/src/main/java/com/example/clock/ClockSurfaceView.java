@@ -16,6 +16,7 @@ public class ClockSurfaceView extends SurfaceView implements Runnable {
     private Thread thread;
     private boolean running = false;
     private SurfaceHolder holder;
+    private boolean isBlackTheme = true;
 
     public ClockSurfaceView(Context context, float length){
         super(context);
@@ -41,6 +42,11 @@ public class ClockSurfaceView extends SurfaceView implements Runnable {
             }
         }
     }
+
+    public void changeTheme(boolean isBlackTheme){
+        this.isBlackTheme = isBlackTheme;
+    }
+
     @Override
     public void run(){
         int sec = 0;
@@ -57,11 +63,14 @@ public class ClockSurfaceView extends SurfaceView implements Runnable {
         while(running){
             if(holder.getSurface().isValid()){
                 Canvas canvas = holder.lockCanvas();
-                Paint paint = new Paint(); paint.setColor(Color.BLACK);
+                Paint paint = new Paint();
+                paint.setColor(Color.BLACK);
+                if (!isBlackTheme){paint.setColor(Color.WHITE);};
                 canvas.drawPaint(paint);
 
                 //draw the marks
                 paint.setColor(Color.WHITE);
+                if (!isBlackTheme){paint.setColor(Color.BLACK);}
                 paint.setStrokeWidth(10);
                 RegPoly setMarks = new RegPoly(60, getWidth()/2, getHeight()/2, length,canvas, paint);
                 setMarks.drawNodes();

@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     TimerSurfaceView timer;
     ConstraintLayout mainLayout;
     boolean isClock = true;
+    Button button1, button2;
 
     //edit menu
     @Override
@@ -45,11 +47,26 @@ public class MainActivity extends AppCompatActivity {
         //get the size of the screen
         setContentView(R.layout.activity_main);
 
-        clock = new ClockSurfaceView(this , 300);
-        timer = new TimerSurfaceView(this, 300 , 600);
+        clock = new ClockSurfaceView(this , 400);
+        timer = new TimerSurfaceView(this, 400 , 600);
         mainLayout = (ConstraintLayout) findViewById(R.id.main_layout);
         //mainLayout.addView(timer);
         mainLayout.addView(clock);
+
+        button1 = findViewById(R.id.button1);
+        button2 = findViewById(R.id.button2);
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clock.changeTheme(true);
+            }
+        });
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clock.changeTheme(false);
+            }
+        });
 
     }
 

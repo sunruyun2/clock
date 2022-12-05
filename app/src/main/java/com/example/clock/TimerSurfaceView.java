@@ -51,6 +51,7 @@ public class TimerSurfaceView extends SurfaceView implements Runnable {
     //draw a text before the button(based on input) is clicked
     @Override
     public void run(){
+        int counter = 0;
         while(running){
             if(holder.getSurface().isValid()){
                 Canvas canvas = holder.lockCanvas();
@@ -67,11 +68,18 @@ public class TimerSurfaceView extends SurfaceView implements Runnable {
                 timer.drawTimer();
                 try{Thread.sleep(1000);}
                 catch (Exception e){}
-                if (start){
+                if (start & secs >0){
                     secs--;
                 }
-                if (secs < 0){
-                    running = false;
+                
+                if (secs <= 0){
+                    if (counter % 2 == 1){
+                        paint.setColor(Color.BLACK);
+                        if (!isBlackTheme){paint.setColor(Color.WHITE);};
+                        canvas.drawPaint(paint);
+                    }
+                    counter++;
+
                 }
                 holder.unlockCanvasAndPost(canvas);
             }

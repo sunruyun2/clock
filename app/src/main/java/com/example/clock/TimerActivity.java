@@ -20,7 +20,7 @@ public class TimerActivity extends AppCompatActivity {
     ClockSurfaceView clock;
     TimerSurfaceView timer;
     ConstraintLayout timerLayout;
-    Button start ,add, minus;
+    Button start ,add, minus,reset;
     int secs = 30;
     boolean timerStart = false;
     Button button3, button4;
@@ -95,8 +95,6 @@ public class TimerActivity extends AppCompatActivity {
             }
         });
 
-
-
         //reduce secs
         minus = findViewById(R.id.minus30);
         minus.setOnClickListener(new View.OnClickListener() {
@@ -111,6 +109,14 @@ public class TimerActivity extends AppCompatActivity {
             }
         });
 
+        reset = findViewById(R.id.reset);
+        reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                timer.setSecs(30);
+                timer.setStart(false);
+            }
+        });
 
 
     }

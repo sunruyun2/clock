@@ -71,8 +71,8 @@ public class TimerSurfaceView extends SurfaceView implements Runnable {
                 if (start & secs >0){
                     secs--;
                 }
-                
-                if (secs <= 0){
+
+                if (start & secs <= 0){
                     if (counter % 2 == 1){
                         paint.setColor(Color.BLACK);
                         if (!isBlackTheme){paint.setColor(Color.WHITE);};
@@ -90,8 +90,14 @@ public class TimerSurfaceView extends SurfaceView implements Runnable {
         this.start = true;
     }
 
+    public void setStart(boolean isStart){
+        this.start = isStart;
+    }
+
     public void setSecs(int secs){
         this.secs = secs;
     }
+
+
 }
 

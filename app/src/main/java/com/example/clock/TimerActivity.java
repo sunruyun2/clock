@@ -86,11 +86,16 @@ public class TimerActivity extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (secs < 3570){
-                    secs = secs + 30;
-                    timer.setSecs(secs);
+                boolean isStart = timer.getStart();
+                if (!isStart){
+                    if (secs < 3570 ){
+                        secs = secs + 30;
+                        timer.setSecs(secs);
+                    } else {
+                        Toast.makeText(TimerActivity.this, "time is beyond the limit", Toast.LENGTH_SHORT).show();
+                    }
                 } else {
-                    Toast.makeText(TimerActivity.this, "time is beyond the limit", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TimerActivity.this, "don't update timer while it is running", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -100,11 +105,16 @@ public class TimerActivity extends AppCompatActivity {
         minus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (secs >= 30){
-                    secs = secs - 30;
-                    timer.setSecs(secs);
+                boolean isStart = timer.getStart();
+                if (!isStart){
+                    if (secs >= 30){
+                        secs = secs - 30;
+                        timer.setSecs(secs);
+                    } else {
+                        Toast.makeText(TimerActivity.this, "time ie below the limit", Toast.LENGTH_SHORT).show();
+                    }
                 } else {
-                    Toast.makeText(TimerActivity.this, "time ie below the limit", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TimerActivity.this, "do not update timer while it is running", Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -12,37 +12,41 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Start"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/reset"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.85" />
+        app:layout_constraintTop_toBottomOf="@+id/minus30" />
 
     <Button
         android:id="@+id/plus30"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="+30s"
-        app:layout_constraintBottom_toTopOf="@+id/timerStart"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/minus30"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8" />
 
     <Button
         android:id="@+id/minus30"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="-30s"
-        app:layout_constraintBottom_toTopOf="@+id/plus30"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8"
+        app:layout_constraintEnd_toStartOf="@+id/plus30"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="502dp" />
+
     <Button
         android:id="@+id/reset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="reset"
-        app:layout_constraintTop_toBottomOf="@+id/timerStart"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/timerStart"
+        app:layout_constraintTop_toBottomOf="@+id/plus30" />
 
     <Button
         android:id="@+id/button3"
